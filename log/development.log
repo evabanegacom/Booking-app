@@ -33356,3 +33356,16 @@ Migrating to AddNewFieldsToUsers (20201208163329)
   ↳ bin/rails:9
   [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (4.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5073945470573576205)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddColumnToCars (20201208164158)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (16.6ms)[0m  [1m[35mALTER TABLE "cars" ADD "speed" character varying[0m
+  ↳ db/migrate/20201208164158_add_column_to_cars.rb:3
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
+  ↳ bin/rails:9
