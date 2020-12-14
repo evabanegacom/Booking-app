@@ -15,7 +15,7 @@
 - **User authentication:** allows new user to register and existing users to login.
 - **Fetch all cars:** enables users to view available cars and their individual details.
 - **Fetch all bookings:** enables users to view existing bookings, both past and future.
-- **Create new booking:** allows users to book a new booking.
+- **Create new booking:** allows make a new booking with a car of their choice.
 
 ## Getting Started
 
@@ -36,8 +36,8 @@ To get a local copy up and running follow these simple example steps.
 - Web browser (Chrome/Firefox)
 - [Node](https://nodejs.org/en/)
 - [NPM](https://www.npmjs.com/get-npm)
-- Ruby v2.7.1
-- Ruby on Rails v6
+- Ruby v2.6.5
+- Ruby on Rails v5
 - Postgresql v >= 9.5
 
 ## Project Setup
