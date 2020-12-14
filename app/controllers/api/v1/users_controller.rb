@@ -1,4 +1,6 @@
-class Api::V1::UsersController < ApplicationController
+# frozen_string_literal: true
+
+class Api::V1::UsersController < ApplicationController # rubocop:disable Style/ClassAndModuleChildren
   before_action :authorized, only: %i[auto_login]
 
   def index

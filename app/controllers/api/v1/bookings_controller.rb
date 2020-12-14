@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::BookingsController < ApplicationController
   before_action :set_booking, only: %i[show update destroy]
 
