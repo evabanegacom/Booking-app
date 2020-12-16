@@ -21,12 +21,12 @@ class Api::V1::CarsController < ApplicationController
     if @user.admin == true
       @car = @user.cars.create(car_params)
       if @car.valid?
-        render json: { status: :created, car: @car }
+        render json: { car: @car }, status: 200
       else
-        render json: { error: @car.errors }
+        render json: { error: @car.errors }, status: 400
       end
     else
-      render json: { status: 'you no admin' }
+      render json: { status: "you're not an admin" }, status: 400
     end
   end
   # PATCH/PUT /cars/1
@@ -53,6 +53,6 @@ class Api::V1::CarsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def car_params
-    params.permit(:name, :model, :manufacturer, :category, :avatar, :user_id, :speed, :country, :price)
+    params.permit(:name, :model, :manufacturer, :category, :avatar, :speed, :country, :price)
   end
 end

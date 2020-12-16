@@ -33369,3 +33369,888 @@ Migrating to AddColumnToCars (20201208164158)
   ↳ bin/rails:9
   [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(5073945470573576205)[0m
   ↳ bin/rails:9
+Started POST "/api/v1/users?email=precious@yahoo.com&name=precious&password=[FILTERED]&admin=true" for ::1 at 2020-12-16 12:02:43 +0100
+  [1m[35m (16.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/precious/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"precious", "model"=>"2020", "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"44", "email"=>"precious@yahoo.com", "password"=>"[FILTERED]", "admin"=>"true"}
+Unpermitted parameters: :model, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Create (22.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "admin") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "precious"], ["email", "precious@yahoo.com"], ["password_digest", "$2a$12$u2Jin3K4HINpRTLiMG6WZ.aOIXJxHulqzPnrJloz5ReLyaAQNbRyW"], ["created_at", "2020-12-16 11:02:45.896398"], ["updated_at", "2020-12-16 11:02:45.896398"], ["admin", true]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (13.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (5.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "precious@yahoo.com"], ["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 200 OK in 517ms (Views: 1.1ms | ActiveRecord: 56.5ms)
+
+
+Started POST "/api/v1/login?mail=precious@yahoo.com&password=[FILTERED]" for ::1 at 2020-12-16 12:05:06 +0100
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"44", "mail"=>"precious@yahoo.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:22
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/api/v1/login?email=precious@yahoo.com&password=[FILTERED]" for ::1 at 2020-12-16 12:05:21 +0100
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"44", "email"=>"precious@yahoo.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:22
+Completed 200 OK in 523ms (Views: 1.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:06:38 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x000055957d00a948 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-16898-7qct63.jpeg>, @original_filename="ferrari.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"ferrari.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/cars_controller.rb:22
+  [1m[36mCar Create (18.4ms)[0m  [1m[32mINSERT INTO "cars" ("name", "model", "manufacturer", "category", "created_at", "updated_at", "avatar", "user_id", "speed", "price", "country") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "MUSTANG"], ["model", "2020"], ["manufacturer", "Ford"], ["category", "sporty"], ["created_at", "2020-12-16 11:06:39.046885"], ["updated_at", "2020-12-16 11:06:39.046885"], ["avatar", "wte2t9sarbwslvxcmyyv.jpg"], ["user_id", 45], ["speed", "70KM/H"], ["price", "$200000"], ["country", "United States"]]
+  ↳ app/controllers/api/v1/cars_controller.rb:22
+  [1m[35m (35.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/cars_controller.rb:22
+  [1m[36mCar Update All (87.2ms)[0m  [1m[33mUPDATE "cars" SET "avatar" = 'image/upload/v1608116830/wte2t9sarbwslvxcmyyv.jpg' WHERE "cars"."id" = $1[0m  [["id", 23]]
+  ↳ app/controllers/api/v1/cars_controller.rb:22
+Completed 200 OK in 4899ms (Views: 2.5ms | ActiveRecord: 153.9ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:07:10 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f02e0e723d8 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-16898-1wgu225.jpeg>, @original_filename="ferrari.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"ferrari.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 200 OK in 188ms (Views: 2.3ms | ActiveRecord: 23.2ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:09:47 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f02cc0f5bb0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-16898-12dhzxk.jpeg>, @original_filename="ferrari.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"ferrari.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 14.3ms)
+
+
+  
+ArgumentError (You are passing an instance of ActiveRecord::Base to `find`. Please pass the id of the object by calling `.id`.):
+  
+app/controllers/api/v1/cars_controller.rb:22:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:10:08 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f02e0af0278 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-16898-n8yz4d.jpeg>, @original_filename="ferrari.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"ferrari.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:22
+Completed 200 OK in 172ms (Views: 2.0ms | ActiveRecord: 32.9ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:17:34 +0100
+  [1m[35m (98.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/precious/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f8651258990 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-17930-1r362dp.jpeg>, @original_filename="ferrari.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"ferrari.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+Completed 500 Internal Server Error in 118ms (ActiveRecord: 7.2ms)
+
+
+  
+NoMethodError (undefined method `attr_accessible' for #<Class:0x00007f865127fd38>
+Did you mean?  attr_accessor):
+  
+app/models/user.rb:5:in `<class:User>'
+app/models/user.rb:1:in `<main>'
+app/controllers/application_controller.rb:28:in `logged_in_user'
+app/controllers/application_controller.rb:33:in `logged_in?'
+app/controllers/application_controller.rb:37:in `authorized'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:19:02 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f8650e912d0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-17930-di86us.jpeg>, @original_filename="ferrari.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"ferrari.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (31.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 500 Internal Server Error in 372ms (ActiveRecord: 57.7ms)
+
+
+  
+NoMethodError (undefined method `attr_accessible' for #<Class:0x00007f86513390a8>
+Did you mean?  attr_accessor):
+  
+app/models/car.rb:4:in `<class:Car>'
+app/models/car.rb:1:in `<main>'
+app/controllers/api/v1/cars_controller.rb:22:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:19:50 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f86511736b0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-17930-m0uraj.jpeg>, @original_filename="ferrari.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"ferrari.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 200 OK in 466ms (Views: 0.4ms | ActiveRecord: 20.8ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:20:47 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x000055e9b58275e0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-17930-wleep0.jpeg>, @original_filename="ferrari.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"ferrari.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 13.0ms)
+
+
+  
+SyntaxError (/home/precious/Desktop/Booking-app/app/models/car.rb:4: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+  attr_accessor, :user, :user_id
+                      ^):
+  
+app/models/car.rb:4: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+app/controllers/api/v1/cars_controller.rb:22:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:21:27 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x000055e9b64f13e8 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-17930-d8io2e.jpeg>, @original_filename="ferrari.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"ferrari.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 16.5ms)
+
+
+  
+SyntaxError (/home/precious/Desktop/Booking-app/app/models/car.rb:4: syntax error, unexpected ':', expecting end
+  attr_accessor: :user, :user_id
+               ^):
+  
+app/models/car.rb:4: syntax error, unexpected ':', expecting end
+app/controllers/api/v1/cars_controller.rb:22:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:25:32 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x000055e9b6db4f48 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-17930-1gkp75z.jpeg>, @original_filename="ferrari.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"ferrari.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 500 Internal Server Error in 165ms (ActiveRecord: 23.8ms)
+
+
+  
+NoMethodError (undefined method `attr_accessible' for #<Class:0x00007f8650eb22c8>
+Did you mean?  attr_accessor):
+  
+app/models/car.rb:4:in `<class:Car>'
+app/models/car.rb:1:in `<main>'
+app/controllers/api/v1/cars_controller.rb:22:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:32:07 +0100
+  [1m[35m (24.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/precious/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/login?email=precious@yahoo.com&password=[FILTERED]" for ::1 at 2020-12-16 12:32:41 +0100
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45", "email"=>"precious@yahoo.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:22
+Completed 200 OK in 809ms (Views: 1.3ms | ActiveRecord: 17.8ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:33:28 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 200 OK in 648ms (Views: 0.6ms | ActiveRecord: 14.3ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:34:06 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f01c11d18d8 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-19962-1ju0bqm.jpeg>, @original_filename="hummer.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"hummer.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 200 OK in 133ms (Views: 68.7ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:37:55 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x000055612bd04a80 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-19962-14q3fj4.jpeg>, @original_filename="hummer.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"hummer.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:24
+Completed 200 OK in 224ms (Views: 6.3ms | ActiveRecord: 22.8ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:41:02 +0100
+  [1m[35m (28.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/precious/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f30312eaeb0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-20568-seu8dt.jpeg>, @original_filename="hummer.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"hummer.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:27
+Completed 200 OK in 232ms (Views: 8.3ms | ActiveRecord: 32.6ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:42:00 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f3031362078 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-20568-1dza9w4.jpeg>, @original_filename="hummer.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"hummer.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:28
+Completed 200 OK in 249ms (Views: 9.5ms | ActiveRecord: 26.3ms)
+
+
+Started GET "/" for ::1 at 2020-12-16 12:42:16 +0100
+Processing by StaticController#index as HTML
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-12-16 12:42:18 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-12-16 12:42:45 +0100
+  
+ActionController::RoutingError (uninitialized constant UsersController):
+  
+bootsnap (1.5.1) lib/bootsnap/load_path_cache/core_ext/active_support.rb:80:in `block in load_missing_constant'
+bootsnap (1.5.1) lib/bootsnap/load_path_cache/core_ext/active_support.rb:9:in `without_bootsnap_cache'
+bootsnap (1.5.1) lib/bootsnap/load_path_cache/core_ext/active_support.rb:80:in `rescue in load_missing_constant'
+bootsnap (1.5.1) lib/bootsnap/load_path_cache/core_ext/active_support.rb:59:in `load_missing_constant'
+activesupport (5.2.4.4) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.4.4) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.4.4) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.4.4) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.4.4) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.4.4) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.4.4) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.4.4) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.4.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.4.4) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4.4) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4.4) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4.4) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (5.2.4.4) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4.4) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-12-16 12:44:05 +0100
+Processing by StaticController#index as HTML
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 4ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:45:12 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f3048020c18 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-20568-e255e.jpeg>, @original_filename="hummer.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"hummer.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:28
+Completed 400 Bad Request in 133ms (ActiveRecord: 12.6ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: car):
+  
+app/controllers/api/v1/cars_controller.rb:64:in `car_params'
+app/controllers/api/v1/cars_controller.rb:30:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:47:42 +0100
+Error occurred while parsing request parameters.
+Contents:
+
+{"car": {"name":"mustang", "model": "2020", "category": "sporty", "avatar": "car.jpg", "manufacturer": " ford", "user_id": 45}
+  
+ActionDispatch::Http::Parameters::ParseError (767: unexpected token at '{"car": {"name":"mustang", "model": "2020", "category": "sporty", "avatar": "car.jpg", "manufacturer": " ford", "user_id": 45}'):
+  
+actionpack (5.2.4.4) lib/action_dispatch/http/parameters.rb:117:in `rescue in parse_formatted_parameters'
+actionpack (5.2.4.4) lib/action_dispatch/http/parameters.rb:111:in `parse_formatted_parameters'
+actionpack (5.2.4.4) lib/action_dispatch/http/request.rb:381:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (5.2.4.4) lib/action_dispatch/http/request.rb:380:in `POST'
+actionpack (5.2.4.4) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (5.2.4.4) lib/action_controller/metal/params_wrapper.rb:290:in `_wrapper_enabled?'
+actionpack (5.2.4.4) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (5.2.4.4) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.4.4) lib/abstract_controller/base.rb:134:in `process'
+actionpack (5.2.4.4) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.4.4) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.4.4) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.4.4) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.4.4) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4.4) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4.4) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4.4) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (5.2.4.4) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4.4) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:47:57 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"car"=>{"name"=>"mustang", "model"=>"2020", "category"=>"sporty", "avatar"=>"car.jpg", "manufacturer"=>" ford", "user_id"=>45}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+Completed 404 Not Found in 11ms (ActiveRecord: 2.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/api/v1/cars_controller.rb:28:in `create'
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:53:50 +0100
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/precious/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f55812e6f20 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-22694-1lnfwby.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-12-16 12:54:02 +0100
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f5564034bc8 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-22694-15swswl.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:22
+Completed 200 OK in 74ms (Views: 0.5ms | ActiveRecord: 6.4ms)
+
+
+Started POST "/api/v1/login?email=precious@yahoo.com&password=[FILTERED]" for ::1 at 2020-12-16 12:54:58 +0100
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x000056417b71d730 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-22694-xpbu07.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45", "email"=>"precious@yahoo.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:22
+Completed 200 OK in 454ms (Views: 1.0ms | ActiveRecord: 8.3ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:55:56 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x000056417cae9840 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-22694-19xfit8.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:27
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+  [1m[36mCar Create (28.5ms)[0m  [1m[32mINSERT INTO "cars" ("name", "model", "manufacturer", "category", "created_at", "updated_at", "avatar", "user_id", "speed", "price", "country") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "MUSTANG"], ["model", "2020"], ["manufacturer", "Ford"], ["category", "sporty"], ["created_at", "2020-12-16 11:55:57.118321"], ["updated_at", "2020-12-16 11:55:57.118321"], ["avatar", "kut3cpd90vvaiyani5tn.jpg"], ["user_id", 45], ["speed", "70KM/H"], ["price", "$200000"], ["country", "United States"]]
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+  [1m[35m (51.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+  [1m[36mCar Update All (90.2ms)[0m  [1m[33mUPDATE "cars" SET "avatar" = 'image/upload/v1608119788/kut3cpd90vvaiyani5tn.jpg' WHERE "cars"."id" = $1[0m  [["id", 24]]
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+Completed 200 OK in 3978ms (Views: 0.5ms | ActiveRecord: 188.9ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 12:56:30 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f5580acb098 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-22694-j98txp.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:27
+Completed 200 OK in 142ms (Views: 4.7ms | ActiveRecord: 30.1ms)
+
+
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:04:19 +0100
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/precious/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b6d20b3f0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-8aydgp.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:27
+Unpermitted parameter: :user_id
+  [1m[35m (4.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+  [1m[36mCar Create (2.2ms)[0m  [1m[32mINSERT INTO "cars" ("name", "model", "manufacturer", "category", "created_at", "updated_at", "avatar", "user_id", "speed", "price", "country") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "MUSTANG"], ["model", "2020"], ["manufacturer", "Ford"], ["category", "sporty"], ["created_at", "2020-12-16 12:04:20.355684"], ["updated_at", "2020-12-16 12:04:20.355684"], ["avatar", "fmbqtxsftf3mfgsdggtu.jpg"], ["user_id", 45], ["speed", "70KM/H"], ["price", "$200000"], ["country", "United States"]]
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+  [1m[35m (19.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+  [1m[36mCar Update All (94.8ms)[0m  [1m[33mUPDATE "cars" SET "avatar" = 'image/upload/v1608120289/fmbqtxsftf3mfgsdggtu.jpg' WHERE "cars"."id" = $1[0m  [["id", 25]]
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+Completed 200 OK in 2714ms (Views: 0.9ms | ActiveRecord: 149.1ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:04:42 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x0000558c6188c190 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-sbv1ow.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "text/plain"=>[""]}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+Completed 404 Not Found in 13ms (ActiveRecord: 2.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/api/v1/cars_controller.rb:27:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:05:20 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b6c75eb28 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-9tqfc2.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "text/plain"=>[""]}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+Completed 404 Not Found in 63ms (ActiveRecord: 12.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/api/v1/cars_controller.rb:27:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:05:44 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b6d551938 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-178tmt9.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "text/plain"=>[""]}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+Completed 404 Not Found in 70ms (ActiveRecord: 21.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Car without an ID):
+  
+app/controllers/api/v1/cars_controller.rb:27:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:06:08 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b5c13cb10 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-1hph1qs.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "text/plain"=>[""]}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+Completed 404 Not Found in 49ms (ActiveRecord: 11.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/api/v1/cars_controller.rb:27:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:06:23 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x0000558c631253f0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-jt30no.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "text/plain"=>[""]}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+Completed 404 Not Found in 60ms (ActiveRecord: 15.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/api/v1/cars_controller.rb:27:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:09:03 +0100
+  
+SyntaxError (/home/precious/Desktop/Booking-app/app/controllers/api/v1/cars_controller.rb:27: syntax error, unexpected tIDENTIFIER, expecting ')'
+... = User.find_by(:user_id params[:user_id])
+...                         ^~~~~~
+/home/precious/Desktop/Booking-app/app/controllers/api/v1/cars_controller.rb:27: syntax error, unexpected ')', expecting end
+...d_by(:user_id params[:user_id])
+...                              ^):
+  
+app/controllers/api/v1/cars_controller.rb:27: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/controllers/api/v1/cars_controller.rb:27: syntax error, unexpected ')', expecting end
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:10:03 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b6d708b50 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-19yujb.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "text/plain"=>[""]}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:27
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 13.4ms)
+
+
+  
+NoMethodError (undefined method `admin' for nil:NilClass):
+  
+app/controllers/api/v1/cars_controller.rb:28:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:11:06 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b5c3ab4a0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-1dxdils.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:27
+Unpermitted parameter: :user_id
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+  [1m[36mCar Create (1.1ms)[0m  [1m[32mINSERT INTO "cars" ("name", "model", "manufacturer", "category", "created_at", "updated_at", "avatar", "user_id", "speed", "price", "country") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "MUSTANG"], ["model", "2020"], ["manufacturer", "Ford"], ["category", "sporty"], ["created_at", "2020-12-16 12:11:06.504067"], ["updated_at", "2020-12-16 12:11:06.504067"], ["avatar", "kzishozdcq0az8bmgg3y.jpg"], ["user_id", 45], ["speed", "70KM/H"], ["price", "$200000"], ["country", "United States"]]
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+  [1m[35m (14.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+  [1m[36mCar Update All (93.6ms)[0m  [1m[33mUPDATE "cars" SET "avatar" = 'image/upload/v1608120695/kzishozdcq0az8bmgg3y.jpg' WHERE "cars"."id" = $1[0m  [["id", 26]]
+  ↳ app/controllers/api/v1/cars_controller.rb:29
+Completed 200 OK in 1970ms (Views: 0.8ms | ActiveRecord: 137.5ms)
+
+
+Started POST "/api/v1/users?name=precious&password=[FILTERED]&email=precious@yahoo.com" for ::1 at 2020-12-16 13:15:36 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"precious", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b6c37b330 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-zsfxbq.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45", "password"=>"[FILTERED]", "email"=>"precious@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 500 Internal Server Error in 941ms (ActiveRecord: 16.2ms)
+
+
+  
+NameError (undefined local variable or method `user' for #<Api::V1::UsersController:0x00007f7b6cb0e020>
+Did you mean?  @user):
+  
+app/controllers/api/v1/users_controller.rb:16:in `create'
+Started POST "/api/v1/users?name=precious&password=[FILTERED]&email=precious@yahoo.com" for ::1 at 2020-12-16 13:16:32 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"precious", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b6d409030 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-pxm1vn.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45", "password"=>"[FILTERED]", "email"=>"precious@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 500 Internal Server Error in 764ms (ActiveRecord: 14.9ms)
+
+
+  
+NoMethodError (undefined method `process_error' for #<Api::V1::UsersController:0x00007f7b6d3e8f60>
+Did you mean?  process):
+  
+app/controllers/api/v1/users_controller.rb:16:in `create'
+Started POST "/api/v1/users?name=precious&password=[FILTERED]&email=precious@yahoo.com" for ::1 at 2020-12-16 13:18:15 +0100
+  
+SyntaxError (/home/precious/Desktop/Booking-app/app/controllers/api/v1/users_controller.rb:16: syntax error, unexpected '}', expecting =>
+...4, 'Invalid name or password' }
+...                              ^
+/home/precious/Desktop/Booking-app/app/controllers/api/v1/users_controller.rb:42: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/users_controller.rb:16: syntax error, unexpected '}', expecting =>
+app/controllers/api/v1/users_controller.rb:42: syntax error, unexpected end-of-input, expecting end
+Started POST "/api/v1/users?name=precious&password=[FILTERED]&email=precious@yahoo.com" for ::1 at 2020-12-16 13:18:56 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"precious", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b6d57cd68 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-o0fiz0.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45", "password"=>"[FILTERED]", "email"=>"precious@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 200 OK in 520ms (Views: 0.4ms | ActiveRecord: 18.0ms)
+
+
+Started POST "/api/v1/users?name=precious&password=[FILTERED]&email=precious@yahoo.com" for ::1 at 2020-12-16 13:21:09 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"precious", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b5c223ad8 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-1kuydwn.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45", "password"=>"[FILTERED]", "email"=>"precious@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 404 Not Found in 550ms (Views: 0.4ms | ActiveRecord: 15.4ms)
+
+
+Started POST "/api/v1/users?name=precious&password=[FILTERED]&email=precious@yahoo.com" for ::1 at 2020-12-16 13:21:39 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"precious", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x0000558c62b411f0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-yjsmgr.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45", "password"=>"[FILTERED]", "email"=>"precious@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 422 Unprocessable Entity in 444ms (Views: 0.4ms | ActiveRecord: 13.0ms)
+
+
+Started POST "/api/v1/users?name=precious&password=[FILTERED]&email=precious@yahoo.com" for ::1 at 2020-12-16 13:33:00 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"precious", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b6c7575d0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-burpwm.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45", "password"=>"[FILTERED]", "email"=>"precious@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (6.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 404 Not Found in 670ms (Views: 0.4ms | ActiveRecord: 26.0ms)
+
+
+Started POST "/api/v1/users?name=precious&password=[FILTERED]&email=precious@yahoo.com" for ::1 at 2020-12-16 13:33:12 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"precious", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b7419f478 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-1v3k1h.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"45", "password"=>"[FILTERED]", "email"=>"precious@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 404 Not Found in 423ms (Views: 0.3ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:33:43 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f7b74240f58 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-23601-1v2qvfz.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "text/plain"=>[""]}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+Completed 404 Not Found in 9ms (ActiveRecord: 2.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/api/v1/cars_controller.rb:20:in `create'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/api/v1/users?name=louis&password=[FILTERED]&email=precious@yahoo.com" for ::1 at 2020-12-16 13:35:13 +0100
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/precious/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"louis", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fbccd208348 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-nm88bg.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"", "password"=>"[FILTERED]", "email"=>"precious@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "precious@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 404 Not Found in 483ms (Views: 0.5ms | ActiveRecord: 16.5ms)
+
+
+Started POST "/api/v1/users?name=louis&password=[FILTERED]&email=louis@yahoo.com" for ::1 at 2020-12-16 13:35:34 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"louis", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x0000564aaeb6ebe0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-p4277d.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"", "password"=>"[FILTERED]", "email"=>"louis@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "louis@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Create (4.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "louis"], ["email", "louis@yahoo.com"], ["password_digest", "$2a$12$FZvk.SBuCnU6CVqWysSIVeKn69he0x8YTSEhz3/1uOC.NmNPoqQLG"], ["created_at", "2020-12-16 12:35:34.648244"], ["updated_at", "2020-12-16 12:35:34.648244"]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (90.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "louis@yahoo.com"], ["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 200 OK in 520ms (Views: 0.9ms | ActiveRecord: 98.6ms)
+
+
+Started POST "/api/v1/users?name=louis&password=[FILTERED]&email=louis@yahoo.com" for ::1 at 2020-12-16 13:35:47 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"louis", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x0000564aaf57c150 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-ap6esb.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"46", "password"=>"[FILTERED]", "email"=>"louis@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "louis@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (2.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "louis@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 404 Not Found in 412ms (Views: 0.4ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/api/v1/users?name=louis&password=[FILTERED]&email=louis@yahoo.com" for ::1 at 2020-12-16 13:37:10 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"louis", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fbccd1e7490 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-1cx3vrt.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"46", "password"=>"[FILTERED]", "email"=>"louis@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "louis@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "louis@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 404 Not Found in 495ms (Views: 0.6ms | ActiveRecord: 14.4ms)
+
+
+Started POST "/api/v1/users?name=louis&password=[FILTERED]&email=louis@yahoo.com" for ::1 at 2020-12-16 13:37:28 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"louis", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x0000564aafbea438 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-1ycmev4.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"46", "password"=>"[FILTERED]", "email"=>"louis@yahoo.com"}
+Unpermitted parameters: :model, :avatar, :category, :manufacturer, :price, :country, :speed, :user_id
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "louis@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:11
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "louis@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12
+Completed 404 Not Found in 524ms (Views: 0.6ms | ActiveRecord: 16.5ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:37:48 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fbccd2bd1d0 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-1n6x0p2.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"46"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 200 OK in 30ms (Views: 0.5ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:38:33 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fbcc8189cc8 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-s6zsb.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"46"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 200 OK in 68ms (Views: 0.5ms | ActiveRecord: 15.5ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:38:50 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fbccc54b3f8 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-1g9baqn.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "text/plain"=>[""]}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+Completed 404 Not Found in 13ms (ActiveRecord: 0.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/api/v1/cars_controller.rb:20:in `create'
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:41:00 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x0000564aafb33d00 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-1mfqaq0.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"46"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 400 Bad Request in 51ms (Views: 0.4ms | ActiveRecord: 14.7ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:41:23 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fbccd23f618 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-1xhwys3.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"46"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 200 OK in 59ms (Views: 0.5ms | ActiveRecord: 14.0ms)
+
+
+Started POST "/api/v1/cars" for ::1 at 2020-12-16 13:41:42 +0100
+Processing by Api::V1::CarsController#create as */*
+  Parameters: {"name"=>"MUSTANG", "model"=>"2020", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fbcc825c740 @tempfile=#<Tempfile:/tmp/RackMultipart20201216-27404-1cn5v2v.jpeg>, @original_filename="cardillac-one.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"cardillac-one.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "category"=>"sporty", "manufacturer"=>"Ford", "price"=>"$200000", "country"=>"United States", "speed"=>"70KM/H", "user_id"=>"46"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/cars_controller.rb:20
+Completed 400 Bad Request in 81ms (Views: 0.5ms | ActiveRecord: 12.1ms)
+
+

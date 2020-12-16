@@ -18,9 +18,9 @@ class Api::V1::BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
-      render json: { status: :created, car: @booking }
+      render json: { car: @booking }, status: 200
     else
-      render json: @booking.errors, status: :unprocessable_entity
+      render json: { error: @booking.errors }, status: 400
     end
   end
 

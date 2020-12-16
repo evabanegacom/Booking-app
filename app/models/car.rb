@@ -1,7 +1,6 @@
 class Car < ApplicationRecord
   has_many :bookings, dependent: :destroy
   belongs_to :user
-
   mount_uploader :avatar, AvatarUploader
 
   validates :avatar, presence: true
