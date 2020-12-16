@@ -34254,3 +34254,24 @@ Processing by Api::V1::CarsController#create as */*
 Completed 400 Bad Request in 81ms (Views: 0.5ms | ActiveRecord: 12.1ms)
 
 
+  [1m[36mCar Load (2.4ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" ORDER BY "cars"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBooking Load (3.6ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."car_id" = $1 ORDER BY created_at DESC[0m  [["car_id", 23]]
+  [1m[36mCar Destroy (1.3ms)[0m  [1m[31mDELETE FROM "cars" WHERE "cars"."id" = $1[0m  [["id", 23]]
+  [1m[35m (88.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCar Load (2.6ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" ORDER BY "cars"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBooking Load (1.6ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."car_id" = $1 ORDER BY created_at DESC[0m  [["car_id", 24]]
+  [1m[36mCar Destroy (2.0ms)[0m  [1m[31mDELETE FROM "cars" WHERE "cars"."id" = $1[0m  [["id", 24]]
+  [1m[35m (92.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCar Load (1.1ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" ORDER BY "cars"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBooking Load (1.1ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."car_id" = $1 ORDER BY created_at DESC[0m  [["car_id", 25]]
+  [1m[36mCar Destroy (0.9ms)[0m  [1m[31mDELETE FROM "cars" WHERE "cars"."id" = $1[0m  [["id", 25]]
+  [1m[35m (93.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCar Load (1.1ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" ORDER BY "cars"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBooking Load (1.0ms)[0m  [1m[34mSELECT "bookings".* FROM "bookings" WHERE "bookings"."car_id" = $1 ORDER BY created_at DESC[0m  [["car_id", 26]]
+  [1m[36mCar Destroy (0.9ms)[0m  [1m[31mDELETE FROM "cars" WHERE "cars"."id" = $1[0m  [["id", 26]]
+  [1m[35m (38.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCar Load (1.3ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" ORDER BY "cars"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
